@@ -1,14 +1,15 @@
 import mysql.connector
 from flask import Flask
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
 mydb = mysql.connector.connect(
-  host=MYSQLHOST,
-  user=MYSQLUSER,
-  password=MYSQLPASSWORD,
-  database=MYSQLDATABASE,
-  port=MYSQLPORT
+	host=os.getenv('MYSQLHOST'),
+	port=os.getenv('MYSQLPORT'),
+	database=os.getenv('MYSQLDATABASE'),
+ 	user=os.getenv('MYSQLUSER'),
+ 	password=os.getenv('MYSQLPASSWORD')
 )
 
 @app.route('/test', methods=['GET'])
