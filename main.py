@@ -21,5 +21,16 @@ def get_test():
     cur.close()
     return result
 
+@app.route('/admin', methods=['POST'])
+def update_test():
+    new_word = request.form['new_word']
+    cur = mysql.connection.cursor()
+    cur.execute("UPDATE test_table SET test_word = %s", (new_word,))
+    mysql.connection.commit()
+    cur.close()
+    return 'Word updated successfully'
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+
