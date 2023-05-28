@@ -1,5 +1,5 @@
 import mysql.connector
-from flask import Flask
+from flask import Flask, request
 from dotenv import load_dotenv
 import os
 
